@@ -1,3 +1,18 @@
+const baseURL = "https://ci-swapi.herokuapp.com/api/";
+
+function getData(type, cb) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        }
+    };
+
+    xhr.open("GET", baseURL + type + "/");
+    xhr.send();
+}
+
 /* Problem is films doesn’t have the key ‘name’, it has ‘title’ instead 
 What we want to do is use this kind of approach to iterate over the keys to build 
 ourselves a table full of data without actually specifying a property
@@ -26,11 +41,16 @@ Solution:  */
 
     	getData(type, function( data ) {
             data = data.results;
-            getTableHeaders(data[0]);
+        // once we have data results - we need to invoke the function
+        // pass through the first object 
+        // var used to contain the data 
+            var tableHeaders = getTableHeaders(data[0]);
 
         	data.forEach(function( item ) {
-                el.innerHTML += "<p>" + item.name + "</p>";
+                // el.innerHTML += "<p>" + item.name + "</p>";
             });
+
+            el.innerHTML = `<table>${tableHeaders}</table>`
         });
     }
 
