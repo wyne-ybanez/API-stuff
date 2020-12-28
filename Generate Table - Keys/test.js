@@ -21,11 +21,11 @@ Solution:  */
 
 // create new function that takes in a single object 
     // start off as an empty array
-	function getTableHeaders( obj ) {
+	function getTableHeaders(obj) {
 		var tableHeaders = [];
 
 // take our object and iterate over the keys 
-		Object.keys( obj ).forEach(function ( key ) {
+		Object.keys( obj ).forEach(function (key) {
 // it will iterate over each key and push it to our tableHeaders array
     // use <td> to create a new table cell 
 			tableHeaders.push( `<td> ${key} </td>` );
@@ -35,23 +35,28 @@ Solution:  */
 		return `<tr>${tableHeaders}</tr>`;
     }
 
-    // if next and previous exist, create next/previous button
-    function generatePaginationButtons( next, previous ){
-        if ( next && previous ) {
-            return `<button onclick="writeToDocument('${previous}')">Previous</button> `
+    // if next and previous exist, create next/previous URL buttons accordingly
+    function generatePaginationButtons(next, prev){
+        if (next && prev) {
+            return `<button onclick="writeToDocument('${prev}')">Previous</button>
+                    <button onclick="writeToDocument('${next}')">Next</button>`
+        } else if (next && !prev) {
+            return `<button onclick="writeToDocument('${next}')">Next</button>`;
+        } else if (!next && prev) {
+            return `<button onclick="writeToDocument('${prev}')">Previous</button>`;
         }
     }
 
-    function writeToDocument( type ) { 
+    function writeToDocument(type) { 
             var tableRows = [];
             var el = document.getElementById("data");
 
-    	getData(type, function( data ) {
+    	getData(type, function(data) {
 
             // pagination to view data being returned - if they exist, generate pagin... buttons
             var pagination;  
             if (data.next || data.previous){
-                pagination = generatePaginationButtons( data.next, data.previous ) 
+                pagination = generatePaginationButtons(data.next, data.previous) 
             }
 
             data = data.results;
@@ -77,20 +82,6 @@ Solution:  */
                 tableRows.push(`<tr>${dataRow}</tr>`);
             });
 
-            el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`;
+            el.innerHTML = `<table>${tableHeaders}${tableRows}</table>${pagination}`;
         });
     }
-
-
-
-
-
-
-
-
-
-
-    // // gives us the list of all of the keys:
-// 			Object.keys( item ).forEach( function ( key ) {
-// 				console.log( key );
-// 		    }) 
