@@ -21,7 +21,7 @@ Solution:  */
 // create new function that takes in a single object 
 // start off as an empty array
 	function getTableHeaders(obj) {
-		var tableHeaders = [ ];
+		var tableHeaders = [];
 
 // take our object and iterate over the keys 
 		Object.keys( obj ).forEach( function ( key ) {
@@ -35,8 +35,9 @@ Solution:  */
     }
     
 
-    function writeToDocument( type ) {
-    		var el = document.getElementById("data");
+    function writeToDocument( type ) { 
+            var tableRows = [];
+            var el = document.getElementById("data");
     		el.innerHTML = "";
 
     	getData(type, function( data ) {
@@ -46,13 +47,30 @@ Solution:  */
         // var used to contain the data 
             var tableHeaders = getTableHeaders(data[0]);
 
-        	data.forEach(function( item ) {
-                // el.innerHTML += "<p>" + item.name + "</p>";
+        	data.forEach(function(item) {
+        // create an empty array for each individual row 
+                var dataRow = [];
+                
+        // get the key and its data value as well
+                Object.keys(item).forEach(function(key) {
+                    dataRow.push(`<td>${item[key]}</td>`); 
+                })
+        // when the row is created after it has been iterated over - push that row into tableRows array
+                tableRows.push(dataRow);
             });
 
-            el.innerHTML = `<table>${tableHeaders}</table>`
+            el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`
         });
     }
+
+
+
+
+
+
+
+
+
 
     // // gives us the list of all of the keys:
 // 			Object.keys( item ).forEach( function ( key ) {
