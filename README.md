@@ -24,5 +24,12 @@ ourselves a table full of data without actually specifying a property
 8. when the row is created after it has been iterated over - push that row into tableRows array
 
 
+### Additions: 
+
+- We need to have everything appearing on a separate row 
+- Need to shorten information placed in <td> elements - take up less space and display better 
+- Not to worry too much about presentation - just display the JSON data as best as possible
+
+
  
 
