@@ -1,9 +1,10 @@
 Welcome,
 
-Im using Code Institute's template for this tester Project. 
-I will be Accessing API data, retrieving them, I will parse them into JSON if necessary
+Im using Code Institute's template and tutorial for this tester Project. 
+I will be Accessing API data, retrieving them, I will parse them into JSON if necessary.
 
 I will also generate a table that can contain this data using JavaScript.
+The notes in the README are lesson notes and thought processing behind the design and problem solving of this code.
 
 ### - Problem: 
 Problem is films doesn’t have the key ‘name’, it has ‘title’ instead 
@@ -25,10 +26,19 @@ ourselves a table full of data without actually specifying a property
 - We need to have everything appearing on a separate row 
 - Need to shorten information placed in <td> elements - take up less space and display better 
 - Not to worry too much about presentation - just display the JSON data as best as possible
+- There are commas at the top of the table - this is because we are displaying our arrays as strings 
+
+#### Display - To get rid of Commas above table
+
+- We need to use ` .replace() ` method with the arguments ` (/,/g, "") ` ie. `.replace(/,/g, "");` 
+- 1st argument is ` /,/g ` is used to find all instances of comma
+- 2nd argument is ` "" ` an empty string 
+- Meaning we want to find all commas and replace them with an empty string
+
 
 ### Paginations: 
 
-- Pagination to view data being returned 
+- Pagination to view data being returned in further depth
 - If they exist, generate pagination buttons ie. if next and previous exist, create next/previous URL buttons accordingly
 - Adding pagination at the end of the table
 - Issue with the URL we want being appended to the base URL -> get rid of the base URL constant `const baseURL = "https://ci-swapi.herokuapp.com/api/` and pass in full URL's in its place
