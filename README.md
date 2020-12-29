@@ -1,6 +1,3 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
-
-
 Welcome,
 
 Im using Code Institute's template for this tester Project. 
@@ -23,7 +20,7 @@ ourselves a table full of data without actually specifying a property
 7. get the key and its data value as well
 8. when the row is created after it has been iterated over - push that row into tableRows array
 
-### Additions to display: 
+### Display: 
 
 - We need to have everything appearing on a separate row 
 - Need to shorten information placed in <td> elements - take up less space and display better 
@@ -31,6 +28,10 @@ ourselves a table full of data without actually specifying a property
 
 ### Paginations: 
 
-- 
+- Pagination to view data being returned 
+- If they exist, generate pagination buttons ie. if next and previous exist, create next/previous URL buttons accordingly
+- Adding pagination at the end of the table
+- Issue with the URL we want being appended to the base URL -> get rid of the base URL constant `const baseURL = "https://ci-swapi.herokuapp.com/api/` and pass in full URL's in its place
+- Change the ` type ` parameters used to ` url `
  
 
